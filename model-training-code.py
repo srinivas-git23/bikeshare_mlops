@@ -48,7 +48,7 @@ def train_rf_model(x_train, y_train,max_depth=None, n_estimators=100):
     return pipeline
 
 def save_model_artifact(pipeline):
-    artifact_name = 'model.joblib'
+    artifact_name = 'model.bst'
     dump(pipeline, artifact_name)
     model_artifact = bucket.blob('bikeshare_data_reg/artifact/model/'+artifact_name)
     model_artifact.upload_from_filename(artifact_name)
