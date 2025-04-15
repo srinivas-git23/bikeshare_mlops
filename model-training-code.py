@@ -11,7 +11,7 @@ import logging
 logging.basicConfig(filename='bikeshare_training.log', level=logging.INFO,format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
 storage_client = storage.Client()
-bucket = storage_client.bucket("bikeshare_data_reg")
+bucket = storage_client.bucket("bikeshare_data_reg1")
 
 def load_data(filename):
     df = pd.read_csv(filename)
@@ -50,10 +50,10 @@ def train_rf_model(x_train, y_train,max_depth=None, n_estimators=100):
 def save_model_artifact(pipeline):
     artifact_name = 'model.joblib'
     dump(pipeline, artifact_name)
-    model_artifact = bucket.blob('bikeshare_data_reg/artifact/'+artifact_name)
+    model_artifact = bucket.blob('artifact/'+artifact_name)
     model_artifact.upload_from_filename(artifact_name)
 
-filename = 'gs://bikeshare_data_reg/hour.csv'
+filename = 'gs://bikeshare_data_reg1/hour.csv'
 df = load_data(filename)
 X, y = preprocess_data(df)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
