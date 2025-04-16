@@ -33,3 +33,7 @@ images:
   - 'gcr.io/canvas-joy-456715-b1/bikeshare-pipeline-image'
 
 
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+
