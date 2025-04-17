@@ -8,18 +8,9 @@ steps:
     args: ['push', 'gcr.io/canvas-joy-456715-b1/bikeshare-pipeline-image']
 
 
-  # Step 3: Deploy as Cloud Run Job
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: gcloud
-    args:
-      - run
-      - jobs
-      - create
-      - bikeshare-pipeline-job
-      - --image=gcr.io/canvas-joy-456715-b1/bikeshare-pipeline-image
-      - --region=us-east1
 
-  # Step 4: Run the job
+
+  # Step 3: Run the job
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args:
