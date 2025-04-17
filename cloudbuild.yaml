@@ -18,6 +18,7 @@ steps:
       - bikeshare-pipeline-job
       - --region=us-east1
 
+
 images:
   - 'gcr.io/canvas-joy-456715-b1/bikeshare-pipeline-image'
 
