@@ -7,9 +7,6 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/canvas-joy-456715-b1/bikeshare-pipeline-image']
 
-
-
-
   # Step 3: Run the job
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
