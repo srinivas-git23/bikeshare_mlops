@@ -130,7 +130,7 @@ def bikeshare_pipeline(
 # COMPILE + TRIGGER PIPELINE
 # -------------------------------
 if __name__ == "__main__":
-    pipeline_json = "bikeshare_full_pipeline.json"
+    pipeline_json = "gs://bikeshare-7131/bikeshare_full_pipeline.json"
     compiler.Compiler().compile(pipeline_func=bikeshare_pipeline, package_path=pipeline_json)
 
     pipeline_job = pipeline_jobs.PipelineJob(
