@@ -133,11 +133,11 @@ if __name__ == "__main__":
 
     
     
-    compiler.Compiler().compile(pipeline_func=bikeshare_pipeline, package_path=bikeshare_full_pipeline.json)
+    compiler.Compiler().compile(pipeline_func=bikeshare_pipeline, package_path="bikeshare_full_pipeline.json")
 
     pipeline_job = pipeline_jobs.PipelineJob(
         display_name="bikeshare-full-pipeline-run",
-        template_path=bikeshare_full_pipeline.json,
+        template_path="bikeshare_full_pipeline.json",
         enable_caching=False,
         location="us-east1",
         project="canvas-joy-456715-b1"
