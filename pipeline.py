@@ -130,26 +130,20 @@ def bikeshare_pipeline(
 # COMPILE + TRIGGER PIPELINE
 # -------------------------------
 if __name__ == "__main__":
-    BUCKET_NAME = "bikeshare-7131"
-    GCS_PIPELINE_PATH = f"bikeshare_full_pipeline.json"
-    LOCAL_PIPELINE_FILE = "bikeshare_full_pipeline.json"
+
     
     
     compiler.Compiler().compile(pipeline_func=bikeshare_pipeline, package_path=LOCAL_PIPELINE_FILE)
 
     pipeline_job = pipeline_jobs.PipelineJob(
         display_name="bikeshare-full-pipeline-run",
-        template_path=LOCAL_PIPELINE_FILE,
+        template_path=bikeshare_full_pipeline.json,
         enable_caching=False,
         location="us-east1",
         project="canvas-joy-456715-b1"
     )
     pipeline_job.run()
 
-    storage_client = storage.Client()
-    bucket = storage_client.bucket(BUCKET_NAME)
-    blob = bucket.blob(GCS_PIPELINE_PATH)
-    blob.upload_from_filename(LOCAL_PIPELINE_FILE)
-    print(f"Uploaded pipeline spec to gs://{BUCKET_NAME}/{GCS_PIPELINE_PATH}")
+
 
     
