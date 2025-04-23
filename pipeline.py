@@ -133,7 +133,7 @@ if __name__ == "__main__":
 
     
     
-    compiler.Compiler().compile(pipeline_func=bikeshare_pipeline, package_path=LOCAL_PIPELINE_FILE)
+    compiler.Compiler().compile(pipeline_func=bikeshare_pipeline, package_path=bikeshare_full_pipeline.json)
 
     pipeline_job = pipeline_jobs.PipelineJob(
         display_name="bikeshare-full-pipeline-run",
