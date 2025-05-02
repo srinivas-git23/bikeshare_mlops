@@ -56,6 +56,11 @@ def save_model_artifact(pipeline):
 filename = 'gs://bikeshare-7131/hour.csv'
 df = load_data(filename)
 X, y = preprocess_data(df)
+with open("feature_order.txt", "w") as f:
+    f.write(",".join(X.columns))
+
+bucket.blob("artifact/feature_order.txt").upload_from_filename("feature_order.txt")
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
 
 max_depth = 10
